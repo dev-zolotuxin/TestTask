@@ -22,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private suspend fun  runScreenFirst(){
-        delay (3000)
+        delay (2000)
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
