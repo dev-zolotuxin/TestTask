@@ -5,4 +5,11 @@
     <string name="login">Логин</string>
     <string name="password">Пароль</string>
     <string name="enter_login">Войти</string>
+
+    <string-array name="operation">
+        <item>+</item>
+        <item>-</item>
+        <item>*</item>
+        <item>/</item>
+    </string-array>
 </resources>
