@@ -10,50 +10,70 @@
         android:layout_height="match_parent"
         tools:context=".fragments.LoginFragment">
 
-        <EditText
-            android:id="@+id/loginEdit"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="148dp"
-            android:background="@color/white"
-            android:elevation="12dp"
-            android:hint="@string/login"
-            android:inputType="textEmailAddress"
-            android:padding="15dp"
-            android:selectAllOnFocus="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.508"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/passEdit"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="25dp"
-            android:background="@color/white"
-            android:elevation="12dp"
-            android:hint="@string/password"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:padding="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginEdit" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLogin"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
-            android:background="@color/background_button"
-            android:text="@string/enter_login"
-            android:textColor="@color/white"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="25dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/passEdit" />
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <EditText
+                android:id="@+id/loginEdit"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="148dp"
+                android:background="@color/white"
+                android:elevation="12dp"
+                android:hint="@string/login"
+                android:inputType="textEmailAddress"
+                android:padding="15dp"
+                android:selectAllOnFocus="true" />
+
+            <EditText
+                android:id="@+id/passEdit"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="25dp"
+                android:background="@color/white"
+                android:elevation="12dp"
+                android:hint="@string/password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:padding="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loginEdit" />
+
+            <CheckBox
+                android:id="@+id/rememberCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:text="Запомнить"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteY="282dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogin"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="30dp"
+                android:background="@color/background_button"
+                android:text="@string/enter_login"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/passEdit" />
+
+        </LinearLayout>
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

@@ -1,5 +1,6 @@
 package com.example.testtask.fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import com.example.testtask.MainActivity
 import com.example.testtask.R
+import com.example.testtask.Settings
 import com.example.testtask.repository.NaviRepository
 import com.github.terrakok.cicerone.Router
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,6 +21,10 @@ import org.koin.android.ext.android.inject
 class LoginFragment : Fragment() {
 
     private val router by inject<Router>()
+
+    private val settings by lazy {
+        Settings(requireActivity())
+    }
 
 
     override fun onCreateView(
@@ -46,16 +52,23 @@ class LoginFragment : Fragment() {
             tvTitle.text = "Авторизация"
             imgBack.isVisible = false
         }
+        rememberCheck.isChecked = settings.isCheckRemember
     }
 
     override fun onResume() {
         super.onResume()
-        val loginString = "admin"
-        val passwordString = "123"
+        settings.login = "admin"
+        settings.password = "123"
+
+        if (rememberCheck.isChecked) {
+            loginEdit.setText(settings.login)
+            passEdit.setText(settings.password)
+        }
 
         btnLogin.setOnClickListener {
             (activity as? MainActivity)?.hideKeyboard()
-            if (loginEdit.text.toString() == loginString && passEdit.text.toString() == passwordString) {
+            if (loginEdit.text.toString() == settings.login  && passEdit.text.toString() == settings.password ) {
+                settings.isCheckRemember = rememberCheck.isChecked
                 router.navigateTo(NaviRepository.calculation())
             } else
                 Toast.makeText(requireContext(), "Неверный логин/пароль", Toast.LENGTH_SHORT)
