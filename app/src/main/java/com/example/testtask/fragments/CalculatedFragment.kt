@@ -40,14 +40,29 @@ class CalculatedFragment : Fragment() {
 
         btnCalculate.setOnClickListener {
             kotlin.runCatching {
-                when (spOperationSymbol.selectedItemPosition){
-                    0 ->  ResultText.text = "${firstNumberEdit.text.toString().trim().toLong() + secondNumberEdit.text.toString().trim().toLong()}"
-                    1 ->  ResultText.text = "${firstNumberEdit.text.toString().trim().toLong() - secondNumberEdit.text.toString().trim().toLong()}"
-                    2 ->  ResultText.text = "${firstNumberEdit.text.toString().trim().toLong() * secondNumberEdit.text.toString().trim().toLong()}"
-                    3 ->  ResultText.text = "${firstNumberEdit.text.toString().trim().toLong() / secondNumberEdit.text.toString().trim().toLong()}"
+                when (spOperationSymbol.selectedItemPosition) {
+                    0 -> ResultText.text = "${
+                        firstNumberEdit.text.toString().trim()
+                            .toLong() + secondNumberEdit.text.toString().trim().toLong()
+                    }"
+                    1 -> ResultText.text = "${
+                        firstNumberEdit.text.toString().trim()
+                            .toLong() - secondNumberEdit.text.toString().trim().toLong()
+                    }"
+                    2 -> ResultText.text = "${
+                        firstNumberEdit.text.toString().trim()
+                            .toLong() * secondNumberEdit.text.toString().trim().toLong()
+                    }"
+                    3 -> ResultText.text = "${
+                        firstNumberEdit.text.toString().trim()
+                            .toLong() / secondNumberEdit.text.toString().trim().toLong()
+                    }"
                 }
+            }.onSuccess {
+                historyText.append("${firstNumberEdit.text} ${spOperationSymbol.selectedItem} 232${secondNumberEdit.text} = ${ResultText.text}\n")
             }.onFailure {
-                Toast.makeText(requireContext(), "Неправильный ввод чисел", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Неправильный ввод чисел", Toast.LENGTH_SHORT)
+                    .show()
             }
 
         }

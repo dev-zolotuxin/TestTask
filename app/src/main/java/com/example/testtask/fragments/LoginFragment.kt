@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import com.example.testtask.MainActivity
 import com.example.testtask.R
 import com.example.testtask.repository.NaviRepository
@@ -26,6 +27,17 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        loginEdit.addTextChangedListener { text ->
+            btnLogin.isEnabled = !text.isNullOrBlank() && passEdit.length() != 0
+        }
+        passEdit.addTextChangedListener { text ->
+            btnLogin.isEnabled = !text.isNullOrBlank() && loginEdit.length() != 0
+        }
     }
 
     override fun onStart() {
