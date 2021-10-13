@@ -5,22 +5,28 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import com.example.testtask.fragments.LoginFragment
+import com.example.testtask.repository.NaviRepository
+import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.Replace
+import com.github.terrakok.cicerone.androidx.AppNavigator
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
+
+    private val navigatorHolder by inject<NavigatorHolder>()
+    private val navigator = AppNavigator(this@MainActivity, R.id.container)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        navigator.applyCommands(arrayOf(Replace(NaviRepository.login())))
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        val ft = supportFragmentManager.beginTransaction()
-        ft.addToBackStack(null)
-        ft.replace(android.R.id.content, LoginFragment())
-        ft.commit()
+    override fun onResume() {
+        super.onResume()
+        navigatorHolder.setNavigator(navigator)
     }
-
 
     fun hideKeyboard() {
         val view = this.currentFocus
@@ -30,7 +36,5 @@ class MainActivity : AppCompatActivity() {
         }
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
     }
-
-
 
 }

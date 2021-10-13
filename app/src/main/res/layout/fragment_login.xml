@@ -1,52 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/teal_200"
-    tools:context=".LoginFragment">
+    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/loginEdit"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="148dp"
-        android:background="@color/white"
-        android:elevation="12dp"
-        android:hint="@string/login"
-        android:inputType="textEmailAddress"
-        android:padding="15dp"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.LoginFragment">
 
-    <EditText
-        android:id="@+id/passEdit"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="25dp"
-        android:background="@color/white"
-        android:elevation="12dp"
-        android:hint="@string/password"
-        android:imeOptions="actionDone"
-        android:inputType="textPassword"
-        android:padding="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginEdit" />
+        <EditText
+            android:id="@+id/loginEdit"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="148dp"
+            android:background="@color/white"
+            android:elevation="12dp"
+            android:hint="@string/login"
+            android:inputType="textEmailAddress"
+            android:padding="15dp"
+            android:selectAllOnFocus="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:text="@string/enter_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/passEdit" />
+        <EditText
+            android:id="@+id/passEdit"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/white"
+            android:elevation="12dp"
+            android:hint="@string/password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginEdit" />
 
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:text="@string/enter_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/passEdit" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
